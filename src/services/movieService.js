@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/", // sửa theo backend của bạn
+  baseURL: "https://be-ssmfilm.onrender.com/", // sửa theo backend của bạn
 });
 
 export const getHome = async () => {
