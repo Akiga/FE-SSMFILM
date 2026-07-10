@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaPlay, FaStar } from "react-icons/fa";
+import {getImageUrl} from "../utils/image"
 
 function MovieCard({ movie }) {
   return (
@@ -10,7 +11,7 @@ function MovieCard({ movie }) {
       {/* Poster */}
       <div className="relative overflow-hidden aspect-[2/3]">
         <img
-          src={movie.poster_url}
+          src={getImageUrl(movie.poster_url)}
           alt={movie.origin_name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
@@ -25,10 +26,10 @@ function MovieCard({ movie }) {
         </div>
 
         {/* Đánh giá */}
-        {/* <span className="absolute top-3 right-3 flex items-center gap-1 bg-black/70 text-yellow-400 text-xs px-2 py-1 rounded-md">
+        <span className="absolute top-3 right-3 flex items-center gap-1 bg-black/70 text-yellow-400 text-xs px-2 py-1 rounded-md">
           <FaStar size={10} />
           {movie.imdb.vote_average}
-        </span> */}
+        </span>
       </div>
 
       {/* Thông tin */}
