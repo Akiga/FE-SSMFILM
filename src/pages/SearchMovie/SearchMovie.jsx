@@ -5,6 +5,7 @@ import { searchMovies } from "../../services/movieService";
 import MovieCard from "../../components/MovieCard";
 import Pagination from "../../components/Pagination";
 import SearchSkeleton from "../../components/SkeletonMovieCard";
+import PageTransition from "../../components/PageTransition";
 
 function SearchMovie() {
   const [searchParams] = useSearchParams();
@@ -39,6 +40,7 @@ function SearchMovie() {
   }, [keyword, currentPage]);
 
   return (
+    <PageTransition>
     <div className="max-w-7xl mx-auto px-6 py-10">
       <h1 className="text-3xl text-white font-bold mb-8">
         Kết quả tìm kiếm: "{keyword}"
@@ -72,6 +74,7 @@ function SearchMovie() {
       </>
     )}
     </div>
+    </PageTransition>
   );
 }
 

@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import MainLayout from "../layouts/MainLayout";
 
@@ -11,30 +12,45 @@ import SearchResults from "../pages/SearchMovie/SearchMovie";
 import NotFound from "../pages/Error/Error";
 
 function AppRoutes() {
-  return (
-    <Routes>
-    <Route element={<MainLayout />}>
-        <Route path="/" element={<Home />} />
+    const location = useLocation();
 
-        <Route path="/list" element={<ListFilm />} />
-        
-        <Route path="/category/:slug" element={<ListFilm2 type="category" />} />
+    return (
+        <AnimatePresence mode="wait">
+            <Routes
+                location={location}
+                key={location.pathname}
+            >
+                <Route element={<MainLayout />}>
+                    <Route path="/" element={<Home />} />
 
-        <Route path="/country/:slug" element={<ListFilm2 type="country" />} />
+                    <Route path="/list" element={<ListFilm />} />
 
-        <Route path="/list/:slug" element={<ListFilm2 type="topic" />} />
+                    <Route
+                        path="/category/:slug"
+                        element={<ListFilm2 type="category" />}
+                    />
 
-        <Route path="/search" element={<SearchResults />} />
+                    <Route
+                        path="/country/:slug"
+                        element={<ListFilm2 type="country" />}
+                    />
 
-        <Route path="/movie/:slug" element={<MovieDetail />} />
-        
+                    <Route
+                        path="/list/:slug"
+                        element={<ListFilm2 type="topic" />}
+                    />
 
-        <Route path="/watch/:slug/" element={<WatchMovie />} />
-    </Route>
+                    <Route path="/search" element={<SearchResults />} />
 
-    <Route path="*" element={<NotFound />} />
-    </Routes>
-  );
+                    <Route path="/movie/:slug" element={<MovieDetail />} />
+
+                    <Route path="/watch/:slug" element={<WatchMovie />} />
+                </Route>
+
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </AnimatePresence>
+    );
 }
 
 export default AppRoutes;

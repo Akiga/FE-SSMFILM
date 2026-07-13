@@ -14,6 +14,7 @@ import { getMovieDetail } from "../../services/movieService";
 import EpisodeList from "../../components/EpisodeList";
 import ActorList from "../../components/ActorList";
 import DetailSkeleton from "../../components/DetailSkeleton";
+import PageTransition from "../../components/PageTransition";
 
 function MovieDetail() {
   const { slug } = useParams();
@@ -48,6 +49,7 @@ function MovieDetail() {
   if (!movie) return null;
 
   return (
+    <PageTransition>
     <div className="min-h-screen bg-slate-950 text-white">
 
       {/* Backdrop */}
@@ -225,6 +227,7 @@ function MovieDetail() {
       </section>
 
     </div>
+    </PageTransition>
   );
 }
 

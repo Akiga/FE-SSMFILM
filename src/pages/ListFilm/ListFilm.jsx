@@ -5,6 +5,7 @@ import MovieCard from "../../components/MovieCard";
 import Pagination from "../../components/Pagination";
 import { getList } from "../../services/movieService";
 import SearchSkeleton from "../../components/SkeletonMovieCard";
+import PageTransition from "../../components/PageTransition";
 
 
 function ListMovie() {
@@ -36,6 +37,7 @@ function ListMovie() {
   }, [currentPage]);
 
   return (
+    <PageTransition>
     <div className="max-w-7xl mx-auto px-6 py-10">
 
       <div className="mb-8">
@@ -66,6 +68,7 @@ function ListMovie() {
         onPageChange={setCurrentPage}
       />
     </div>
+    </PageTransition>
   );
 }
 

@@ -7,6 +7,7 @@ import {
 
 import { getWatchMovie } from "../../services/movieService";
 import DetailSkeleton from "../../components/DetailSkeleton";
+import PageTransition from "../../components/PageTransition";
 
 function Watch() {
   const { slug } = useParams();
@@ -137,6 +138,7 @@ function Watch() {
   }
 
   return (
+    <PageTransition>
     <div className="max-w-7xl mx-auto px-0 sm:px-4 lg:px-6 py-4 md:py-8">
 
       {/* PLAYER */}
@@ -277,6 +279,7 @@ function Watch() {
         />
       </div>
     </div>
+    </PageTransition>
   );
 }
 

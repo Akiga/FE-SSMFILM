@@ -4,6 +4,7 @@ import {getHome} from "../../services/movieService";
 import HeroBanner from "../../components/HeroBanner";
 import TopicCard from "../../components/TopicCard";
 import MovieSection from "../../components/MovieSection";
+import PageTransition from "../../components/PageTransition";
 
 const topics = [
   {
@@ -55,7 +56,7 @@ function Home(){
     }, []);
 
     return (
-
+    <PageTransition>
     <>
         <HeroBanner />
         <section className="max-w-7xl mx-auto px-6 py-12">
@@ -105,6 +106,7 @@ function Home(){
             loading={loading}
         />
     </>
+    </PageTransition>
     )
 }
 
