@@ -10,6 +10,8 @@ import ListFilm from "../pages/ListFilm/ListFilm";
 import ListFilm2 from "../pages/ListFilm/ListFilm2";
 import SearchResults from "../pages/SearchMovie/SearchMovie";
 import NotFound from "../pages/Error/Error";
+import Login from "../pages/Auth/Login";
+import Register from "../pages/Auth/Register";
 
 function AppRoutes() {
     const location = useLocation();
@@ -21,6 +23,10 @@ function AppRoutes() {
                 key={location.pathname}
             >
                 <Route element={<MainLayout />}>
+
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+
                     <Route path="/" element={<Home />} />
 
                     <Route path="/list" element={<ListFilm />} />

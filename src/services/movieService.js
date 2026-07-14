@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://be-ssmfilm.onrender.com/", // sửa theo backend của bạn
+  // baseURL: "https://be-ssmfilm.onrender.com/",
+  baseURL: "http://localhost:5000/",
 });
 
 export const getHome = async () => {
@@ -51,10 +52,9 @@ export const getMovieDetail = async (slug) => {
 }
 
 export const getWatchMovie = async (slug, episode) => {
-
     const res = await API.get(
         `/watch/${slug}?ep=${episode || ""}`
     );
     return res.data.data;
-
 }
+
