@@ -5,6 +5,7 @@ import HeroBanner from "../../components/HeroBanner";
 import TopicCard from "../../components/TopicCard";
 import MovieSection from "../../components/MovieSection";
 import PageTransition from "../../components/PageTransition";
+import SearchBar from "../../components/SearchBar";
 
 const topics = [
   {
@@ -59,6 +60,9 @@ function Home(){
     <PageTransition>
     <>
         <HeroBanner />
+        <div className='flex justify-center lg:hidden'>
+            <SearchBar />
+        </div>
         <section className="max-w-7xl mx-auto px-6 py-12">
             <h2 className="text-3xl font-bold text-white mb-8">
                 Chủ đề nổi bật
