@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-import FilterBar from "../../components/FilterBar";
-import MovieCard from "../../components/MovieCard";
-import Pagination from "../../components/Pagination";
+import FilterBar from "../../components/common/FilterBar";
+import MovieCard from "../../components/movie/MovieCard";
+import Pagination from "../../components/common/Pagination";
 import { getList } from "../../services/movieService";
-import SearchSkeleton from "../../components/SkeletonMovieCard";
-import PageTransition from "../../components/PageTransition";
+import SearchSkeleton from "../../components/skeleton/SkeletonMovieCard";
+import PageTransition from "../../components/common/PageTransition";
 
 
 function ListMovie() {

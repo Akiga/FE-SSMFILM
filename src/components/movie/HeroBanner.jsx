@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import hinh1 from "../assets/img/hinh-nen-1920-1080-thumbnail.jpg";
-import hinh2 from "../assets/img/hinh-nen-may-tinh-anime-4k (111).jpg";
-import hinh3 from "../assets/img/ironman_800x450.jpg";
+import hinh1 from "../../assets/img/hinh-nen-1920-1080-thumbnail.jpg";
+import hinh2 from "../../assets/img/hinh-nen-may-tinh-anime-4k (111).jpg";
+import hinh3 from "../../assets/img/ironman_800x450.jpg";
 
 const banners = [
   {

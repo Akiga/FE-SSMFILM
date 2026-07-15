@@ -1,11 +1,11 @@
 import {useEffect, useState} from "react";
 import {getHome} from "../../services/movieService";
 
-import HeroBanner from "../../components/HeroBanner";
-import TopicCard from "../../components/TopicCard";
-import MovieSection from "../../components/MovieSection";
-import PageTransition from "../../components/PageTransition";
-import SearchBar from "../../components/SearchBar";
+import HeroBanner from "../../components/movie/HeroBanner";
+import TopicCard from "../../components/movie/TopicCard";
+import MovieSection from "../../components/movie/MovieSection";
+import PageTransition from "../../components/common/PageTransition";
+import SearchBar from "../../components/common/SearchBar";
 
 const topics = [
   {

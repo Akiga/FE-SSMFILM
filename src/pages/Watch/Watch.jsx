@@ -6,8 +6,8 @@ import {
 } from "react-router-dom";
 
 import { getWatchMovie } from "../../services/movieService";
-import DetailSkeleton from "../../components/DetailSkeleton";
-import PageTransition from "../../components/PageTransition";
+import DetailSkeleton from "../../components/skeleton/DetailSkeleton";
+import PageTransition from "../../components/common/PageTransition";
 
 function Watch() {
   const { slug } = useParams();

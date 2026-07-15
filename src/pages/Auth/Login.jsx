@@ -61,6 +61,7 @@ export default function Login() {
         <input
           type="email"
           name="email"
+          autoComplete="email"
           value={formData.email}
           onChange={handleChange}
           placeholder="Email"
@@ -69,6 +70,7 @@ export default function Login() {
 
         <PasswordInput
           name="password"
+          autoComplete="current-password"
           value={formData.password}
           onChange={handleChange}
           placeholder="Mật khẩu"
@@ -76,7 +78,7 @@ export default function Login() {
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700"
+          className="w-full rounded-lg bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700 cursor-pointer"
         >
           Đăng nhập
         </button>

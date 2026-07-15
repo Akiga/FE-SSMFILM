@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import MovieCard from "./MovieCard";
-import SkeletonMovieCard from "./SkeletonMovieCard";
+import SkeletonMovieCard from "../skeleton/SkeletonMovieCard";
 
 function MovieSection({title, movies = [], link, loading }) {
   return (

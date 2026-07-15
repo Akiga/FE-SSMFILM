@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import Logo from "../../../components/Logo";
-import Navbar from "../../../components/Navbar";
-import SearchBar from "../../../components/SearchBar";
-import UserMenu from "../../../components/UserMenu";
+import Logo from "../../../components/common/Logo";
+import Navbar from "../../../components/layout/Navbar";
+import SearchBar from "../../../components/common/SearchBar";
+import UserMenu from "../../../components/layout/UserMenu";
 
 export default function Header() {
     const [open, setOpen] = useState(false);

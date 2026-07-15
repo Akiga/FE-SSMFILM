@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaPlay, FaStar } from "react-icons/fa";
-import {getImageUrl} from "../utils/image"
+import {getImageUrl} from "../../utils/image"
 
 function MovieCard({ movie }) {
   return (

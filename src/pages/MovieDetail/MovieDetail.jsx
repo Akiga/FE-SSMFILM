@@ -11,10 +11,10 @@ import {
 } from "lucide-react";
 
 import { getMovieDetail } from "../../services/movieService";
-import EpisodeList from "../../components/EpisodeList";
-import ActorList from "../../components/ActorList";
-import DetailSkeleton from "../../components/DetailSkeleton";
-import PageTransition from "../../components/PageTransition";
+import EpisodeList from "../../components/movie/EpisodeList";
+import ActorList from "../../components/movie/ActorList";
+import DetailSkeleton from "../../components/skeleton/DetailSkeleton";
+import PageTransition from "../../components/common/PageTransition";
 
 function MovieDetail() {
   const { slug } = useParams();

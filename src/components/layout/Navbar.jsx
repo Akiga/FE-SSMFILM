@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
-import { getCategories, getCountries } from "../services/movieService";
+import { getCategories, getCountries } from "../../services/movieService";
 
 export default function Navbar({ mobile = false }) {
   const [openMenu, setOpenMenu] = useState(null);

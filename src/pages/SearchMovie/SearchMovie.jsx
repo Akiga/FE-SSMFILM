@@ -2,10 +2,10 @@ import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { searchMovies } from "../../services/movieService";
-import MovieCard from "../../components/MovieCard";
-import Pagination from "../../components/Pagination";
-import SearchSkeleton from "../../components/SkeletonMovieCard";
-import PageTransition from "../../components/PageTransition";
+import MovieCard from "../../components/movie/MovieCard";
+import Pagination from "../../components/common/Pagination";
+import SearchSkeleton from "../../components/skeleton/SkeletonMovieCard";
+import PageTransition from "../../components/common/PageTransition";
 
 function SearchMovie() {
   const [searchParams] = useSearchParams();
