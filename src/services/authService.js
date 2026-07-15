@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  // baseURL: "https://be-ssmfilm.onrender.com/",
-  baseURL: "http://localhost:5000/",
+  baseURL: "https://be-ssmfilm.onrender.com/",
+  // baseURL: "http://localhost:5000/",
 });
 
 export const register = (data) => {
