@@ -6,7 +6,6 @@ import MovieCard from "../../components/movie/MovieCard";
 import Pagination from "../../components/common/Pagination";
 import { getTopic, getListByCategory, getListByCountry } from "../../services/movieService";
 import SearchSkeleton from "../../components/skeleton/SkeletonMovieCard";
-import PageTransition from "../../components/common/PageTransition";
 
 function ListMovie({type}) {
   const { slug } = useParams();
@@ -55,7 +54,6 @@ function ListMovie({type}) {
 }, [slug]);
 
   return (
-    <PageTransition>
     <div className="max-w-7xl mx-auto px-6 py-10">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white">
@@ -99,7 +97,6 @@ function ListMovie({type}) {
         onPageChange={setCurrentPage}
       />
     </div>
-    </PageTransition>
   );
 }
 

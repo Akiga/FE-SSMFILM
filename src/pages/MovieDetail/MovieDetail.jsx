@@ -14,7 +14,11 @@ import { getMovieDetail } from "../../services/movieService";
 import EpisodeList from "../../components/movie/EpisodeList";
 import ActorList from "../../components/movie/ActorList";
 import DetailSkeleton from "../../components/skeleton/DetailSkeleton";
-import PageTransition from "../../components/common/PageTransition";
+import {
+  addFavorite,
+  removeFavorite,
+  checkFavorite,
+} from "../../services/favoriteService";
 
 function MovieDetail() {
   const { slug } = useParams();
@@ -22,34 +26,68 @@ function MovieDetail() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [expand, setExpand] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [favoriteLoading, setFavoriteLoading] = useState(false);
 
   useEffect(() => {
-    const fetchMovie = async () => {
+  const fetchMovie = async () => {
+    try {
+      setLoading(true);
+
+      const data = await getMovieDetail(slug);
+      setMovie(data);
+
+      // Kiểm tra phim đã được yêu thích chưa
       try {
-        setLoading(true);
-
-        const data = await getMovieDetail(slug);
-        setMovie(data);
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
+        const res = await checkFavorite(slug);
+        setIsFavorite(res.isFavorite);
+      } catch (err) {
+        // Nếu chưa đăng nhập hoặc lỗi thì bỏ qua
+        setIsFavorite(false);
       }
-    };
 
-    fetchMovie();
-  }, [slug]);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchMovie();
+}, [slug]);
+
+  const handleFavorite = async () => {
+    try {
+      setFavoriteLoading(true);
+
+      if (isFavorite) {
+        await removeFavorite(slug);
+        setIsFavorite(false);
+      } else {
+        await addFavorite(slug);
+        setIsFavorite(true);
+      }
+    } catch (err) {
+      console.error(err);
+
+      alert(
+        err?.response?.data?.message ||
+        "Bạn cần đăng nhập để sử dụng chức năng này."
+      );
+    } finally {
+      setFavoriteLoading(false);
+    }
+  };
 
   if (loading) return <DetailSkeleton />;
 
   if (!movie) return null;
 
   return (
-    <PageTransition>
     <div className="min-h-screen bg-slate-950 text-white">
 
       {/* Backdrop */}
@@ -154,12 +192,25 @@ function MovieDetail() {
 
                 </button>
 
-                <button className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-6 py-3 rounded-xl">
+                <button
+                  onClick={handleFavorite}
+                  disabled={favoriteLoading}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-xl transition ${
+                    isFavorite
+                      ? "bg-red-500 hover:bg-red-600 text-white"
+                      : "bg-slate-800 hover:bg-slate-700"
+                  }`}
+                >
+                  <Heart
+                    size={20}
+                    fill={isFavorite ? "currentColor" : "none"}
+                  />
 
-                  <Heart size={20} />
-
-                  Yêu thích
-
+                  {favoriteLoading
+                    ? "Đang xử lý..."
+                    : isFavorite
+                      ? "Đã yêu thích"
+                      : "Yêu thích"}
                 </button>
 
                 <button className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-6 py-3 rounded-xl">
@@ -227,7 +278,6 @@ function MovieDetail() {
       </section>
 
     </div>
-    </PageTransition>
   );
 }
 

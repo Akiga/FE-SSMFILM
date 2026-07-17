@@ -12,6 +12,9 @@ import SearchResults from "../pages/SearchMovie/SearchMovie";
 import NotFound from "../pages/Error/Error";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
+import AccountLayout from "../layouts/AccountLayout"
+import Profile from "../pages/Profile/Profile";
+import Favorites from "../pages/Profile/Favorites";
 
 function AppRoutes() {
     const location = useLocation();
@@ -23,34 +26,35 @@ function AppRoutes() {
                 key={location.pathname}
             >
                 <Route element={<MainLayout />}>
-
+                    {/* Auth */}
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
 
+                    {/* Home */}
                     <Route path="/" element={<Home />} />
 
+                    {/* Movie */}
+                    <Route path="/movie/:slug" element={<MovieDetail />} />
+                    <Route path="/watch/:slug" element={<WatchMovie />} />
+
+                    {/* List */}
                     <Route path="/list" element={<ListFilm />} />
+                    <Route path="/list/:slug" element={<ListFilm2 type="topic" />} />
+                    <Route path="/category/:slug" element={<ListFilm2 type="category" />} />
+                    <Route path="/country/:slug" element={<ListFilm2 type="country" />} />
 
-                    <Route
-                        path="/category/:slug"
-                        element={<ListFilm2 type="category" />}
-                    />
-
-                    <Route
-                        path="/country/:slug"
-                        element={<ListFilm2 type="country" />}
-                    />
-
-                    <Route
-                        path="/list/:slug"
-                        element={<ListFilm2 type="topic" />}
-                    />
-
+                    {/* Search */}
                     <Route path="/search" element={<SearchResults />} />
 
-                    <Route path="/movie/:slug" element={<MovieDetail />} />
-
-                    <Route path="/watch/:slug" element={<WatchMovie />} />
+                    {/* Account */}
+                    <Route path="/account" element={<AccountLayout />}>
+                        <Route index element={<Profile />} />
+                        <Route path="profile" element={<Profile />} />
+                        <Route path="favorites" element={<Favorites />} />
+                        {/* <Route path="history" element={<History />} />
+                        <Route path="change-password" element={<ChangePassword />} />
+                        <Route path="settings" element={<Settings />} /> */}
+                    </Route>
                 </Route>
 
                 <Route path="*" element={<NotFound />} />

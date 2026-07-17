@@ -30,7 +30,7 @@ export default function Navbar({ mobile = false }) {
 
   const navClass = ({ isActive }) =>
     `
-    relative text-sm font-medium transition-all duration-300
+    relative text-sm font-medium transition-all duration-300 
     ${
       isActive
         ? "text-blue-500"

@@ -1,9 +1,5 @@
 import axios from "axios";
-
-const API = axios.create({
-  baseURL: "https://be-ssmfilm.onrender.com/",
-  // baseURL: "http://localhost:5000/",
-});
+import API from "./api";
 
 export const getHome = async () => {
   const response = await API.get("/");

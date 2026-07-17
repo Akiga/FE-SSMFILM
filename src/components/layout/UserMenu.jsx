@@ -74,7 +74,7 @@ export default function UserMenu() {
           </div>
 
           <Link
-            to="/profile"
+            to="/account"
             className="flex items-center gap-3 px-4 py-3 text-white hover:bg-slate-800"
           >
             <User size={18} />
@@ -82,7 +82,7 @@ export default function UserMenu() {
           </Link>
 
           <Link
-            to="/favorite"
+            to="/account/favorites"
             className="flex items-center gap-3 px-4 py-3 text-white hover:bg-slate-800"
           >
             <Heart size={18} />

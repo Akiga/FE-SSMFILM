@@ -1,11 +1,23 @@
 import { motion } from "framer-motion";
 
-const PageTransition = ({ children }) => {
+export default function PageTransition({ children }) {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
+            initial={{
+                opacity: 0,
+                y: 20,
+                filter: "blur(6px)",
+            }}
+            animate={{
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+            }}
+            exit={{
+                opacity: 0,
+                y: -20,
+                filter: "blur(6px)",
+            }}
             transition={{
                 duration: 0.35,
                 ease: "easeOut",
@@ -14,6 +26,4 @@ const PageTransition = ({ children }) => {
             {children}
         </motion.div>
     );
-};
-
-export default PageTransition;
+}
