@@ -45,11 +45,6 @@ function MovieDetail() {
         // Nếu chưa đăng nhập hoặc lỗi thì bỏ qua
         setIsFavorite(false);
       }
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
     } catch (error) {
       console.error(error);
     } finally {

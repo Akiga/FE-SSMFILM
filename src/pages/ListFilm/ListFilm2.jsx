@@ -35,10 +35,6 @@ function ListMovie({type}) {
           data.params.pagination.totalItems /
           data.params.pagination.totalItemsPerPage
         ));
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
       } catch (error) {
         console.error(error);
       } finally {

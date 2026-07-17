@@ -82,6 +82,7 @@ export default function Navbar({ mobile = false }) {
             text-gray-300
             hover:text-white
             transition
+            cursor-pointer
           "
         >
           {title}

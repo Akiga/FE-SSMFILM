@@ -21,10 +21,6 @@ function ListMovie() {
 
         setMovies(data.movies.items);
         setTotalPage(data.totalPage);
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
       } catch (error) {
         console.error(error);
       } finally {

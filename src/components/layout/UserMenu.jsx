@@ -50,7 +50,7 @@ export default function UserMenu() {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 rounded-lg p-2 transition hover:bg-slate-800"
+        className="flex items-center cursor-pointer gap-2 rounded-lg p-2 transition hover:bg-slate-800"
       >
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 font-semibold text-white">
           {user.username.charAt(0).toUpperCase()}
@@ -99,7 +99,7 @@ export default function UserMenu() {
 
           <button
             onClick={handleLogout}
-            className="flex w-full items-center gap-3 px-4 py-3 text-red-400 hover:bg-slate-800"
+            className="flex w-full items-center gap-3 px-4 py-3 text-red-400 hover:bg-slate-800 cursor-pointer"
           >
             <LogOut size={18} />
             Đăng xuất

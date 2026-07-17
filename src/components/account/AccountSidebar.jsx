@@ -110,7 +110,7 @@ export default function AccountSidebar() {
 
             <button
                 onClick={handleLogout}
-                className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-red-500 py-3 font-medium text-white transition hover:bg-red-600"
+                className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-red-500 py-3 font-medium text-white transition hover:bg-red-600 cursor-pointer"
             >
                 <LogOut size={18} />
 
