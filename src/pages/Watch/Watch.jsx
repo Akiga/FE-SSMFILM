@@ -7,6 +7,7 @@ import {
 
 import { getWatchMovie } from "../../services/movieService";
 import DetailSkeleton from "../../components/skeleton/DetailSkeleton";
+import { addHistory } from '../../services/historyService'
 
 function Watch() {
   const { slug } = useParams();
@@ -86,6 +87,17 @@ function Watch() {
       ) || currentServer.server_data[0]
     );
   }, [currentServer, episodeSlug]);
+
+  useEffect(() => {
+    if (!movie || !currentEpisode) return;
+
+    addHistory({
+        slug: movie.movie.slug,
+        name: movie.movie.name,
+        poster: movie.movie.poster_url,
+        episode: currentEpisode.name,
+    });
+}, [movie, currentEpisode]);
 
   // =========================
   // Previous / Next Episode

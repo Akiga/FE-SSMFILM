@@ -90,7 +90,7 @@ export default function UserMenu() {
           </Link>
 
           <Link
-            to="/history"
+            to="/account/history"
             className="flex items-center gap-3 px-4 py-3 text-white hover:bg-slate-800"
           >
             <History size={18} />

@@ -15,6 +15,8 @@ import Register from "../pages/Auth/Register";
 import AccountLayout from "../layouts/AccountLayout"
 import Profile from "../pages/Profile/Profile";
 import Favorites from "../pages/Profile/Favorites";
+import Histories from "../pages/Profile/History";
+
 
 function AppRoutes() {
     const location = useLocation();
@@ -51,8 +53,8 @@ function AppRoutes() {
                         <Route index element={<Profile />} />
                         <Route path="profile" element={<Profile />} />
                         <Route path="favorites" element={<Favorites />} />
-                        {/* <Route path="history" element={<History />} />
-                        <Route path="change-password" element={<ChangePassword />} />
+                        <Route path="history" element={<Histories />} />
+                        {/* <Route path="change-password" element={<ChangePassword />} />
                         <Route path="settings" element={<Settings />} /> */}
                     </Route>
                 </Route>
