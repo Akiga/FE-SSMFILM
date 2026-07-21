@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {
     User,
     Heart,
@@ -7,11 +8,26 @@ import {
     Settings,
     LogOut,
 } from "lucide-react";
+import {getProfile} from "../../services/profileService";
 
 export default function AccountSidebar() {
+    const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
-    const user = JSON.parse(localStorage.getItem("user")) || {};
+    useEffect(() => {
+            const fetchProfile = async () => {
+                try {
+                    const res = await getProfile();
+    
+                    setUser(res.data.user);
+                } catch (error) {
+                    console.error(error);
+                    toast.error("Không thể tải thông tin người dùng");
+                }
+            };
+    
+            fetchProfile();
+        }, []);
 
     const menus = [
         {
