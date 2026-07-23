@@ -16,6 +16,7 @@ import AccountLayout from "../layouts/AccountLayout"
 import Profile from "../pages/Profile/Profile";
 import Favorites from "../pages/Profile/Favorites";
 import Histories from "../pages/Profile/History";
+import ChangePassword from "../pages/Profile/ChangePassword";
 
 
 function AppRoutes() {
@@ -54,8 +55,8 @@ function AppRoutes() {
                         <Route path="profile" element={<Profile />} />
                         <Route path="favorites" element={<Favorites />} />
                         <Route path="history" element={<Histories />} />
-                        {/* <Route path="change-password" element={<ChangePassword />} />
-                        <Route path="settings" element={<Settings />} /> */}
+                        <Route path="change-password" element={<ChangePassword />} />
+                        {/* <Route path="settings" element={<Settings />} /> */}
                     </Route>
                 </Route>
 
