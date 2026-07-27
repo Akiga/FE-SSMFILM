@@ -17,16 +17,18 @@ export default function Favorites() {
 
             const favorites = res.data;
 
-            console.log(favorites)
-
             const movieList = await Promise.all(
                 favorites.map(async (item) => {
-                    const movie = await getMovieDetail(item.slug);
-                    return movie.movie;
+                    const detail = await getMovieDetail(item.slug);
+                    if (!detail) {
+                    console.log(`Phim ${item.slug} không còn tồn tại.`);
+                    return null;
+                    }
+                    return detail.movie;
                 })
-            );
+                );
 
-            setMovies(movieList);
+                setMovies(movieList.filter(Boolean));
         } catch (err) {
             console.error(err);
         } finally {

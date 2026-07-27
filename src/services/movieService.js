@@ -43,9 +43,14 @@ export const getListByCategory = async (slug, page = 1) => {
 }
 
 export const getMovieDetail = async (slug) => {
-  const res = await API.get(`/movie/${slug}`);
-  return res.data.data.detailFilm;
-}
+  try {
+    const res = await API.get(`/movie/${slug}`);
+    return res.data.data.detailFilm;
+  } catch (err) {
+    console.error(`Không lấy được phim: ${slug}`, err);
+    return null;
+  }
+};
 
 export const getWatchMovie = async (slug, episode) => {
     const res = await API.get(
