@@ -2,7 +2,7 @@ import axios from "axios";
 import API from "./api";
 
 export const getHome = async () => {
-  const response = await API.get("/");
+  const response = await API.get("/home");
   return response.data.data;
 };
 
