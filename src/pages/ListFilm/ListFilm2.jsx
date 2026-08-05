@@ -5,7 +5,7 @@ import FilterBar from "../../components/common/FilterBar";
 import MovieCard from "../../components/movie/MovieCard";
 import Pagination from "../../components/common/Pagination";
 import { getTopic, getListByCategory, getListByCountry } from "../../services/movieService";
-import SearchSkeleton from "../../components/skeleton/SkeletonMovieCard";
+import SearchSkeleton from "../../components/skeleton/DetailSkeleton";
 
 function ListMovie({type}) {
   const { slug } = useParams();
