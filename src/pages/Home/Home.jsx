@@ -41,6 +41,8 @@ function Home(){
             try {
                 const data = await getHome();
 
+                console.log("Home data:", data.phimLe);
+
                 setMovies(data.movies);
                 setPhimLe(data.phimLe);
                 setPhimBo(data.phimBo);

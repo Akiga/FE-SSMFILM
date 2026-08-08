@@ -5,5 +5,5 @@ export const getImageUrl = (url) => {
     return url;
   }
 
-  return `https://img.phimapi.com/${url}`;
+  return `https://phimimg.com/${url}`;
 };
