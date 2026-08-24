@@ -41,8 +41,6 @@ function Home(){
             try {
                 const data = await getHome();
 
-                console.log("Home data:", data.phimLe);
-
                 setMovies(data.movies);
                 setPhimLe(data.phimLe);
                 setPhimBo(data.phimBo);
@@ -60,9 +58,7 @@ function Home(){
     return (
     <>
         <HeroBanner />
-        <div className='flex justify-center lg:hidden'>
-            <SearchBar />
-        </div>
+        
         <section className="max-w-7xl mx-auto px-6 py-12">
             <h2 className="text-3xl font-bold text-white mb-8">
                 Chủ đề nổi bật

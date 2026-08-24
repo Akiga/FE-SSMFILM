@@ -1,52 +1,160 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+
+import { Menu, X, Search, ArrowLeft } from "lucide-react";
+
 import Logo from "../../../components/common/Logo";
 import Navbar from "../../../components/layout/Navbar";
 import SearchBar from "../../../components/common/SearchBar";
 import UserMenu from "../../../components/layout/UserMenu";
 
 export default function Header() {
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
-    return (
-        <header className="bg-slate-900 text-white sticky top-0 z-50 shadow">
-            <div className="max-w-8xl mx-auto h-16 px-5 flex items-center justify-between">
+  return (
+    <header className="sticky top-0 z-50 bg-slate-900 text-white shadow">
+      
+      {/* =========================
+          MOBILE SEARCH
+      ========================== */}
+      {searchOpen ? (
+        <div className="flex h-16 items-center gap-2 px-4">
+          
+          {/* Back */}
+          <button
+            type="button"
+            onClick={() => setSearchOpen(false)}
+            className="
+              flex
+              h-10
+              w-10
+              shrink-0
+              items-center
+              justify-center
+              rounded-lg
+              transition
+              hover:bg-slate-800
+            "
+            aria-label="Quay lại"
+          >
+            <ArrowLeft size={22} />
+          </button>
 
-                <Logo />
+          {/* Search */}
+          <SearchBar
+            mobile
+            autoFocus
+            onSearch={() => setSearchOpen(false)}
+          />
 
-                <div className="hidden lg:block">
-                    <Navbar />
-                </div>
+          {/* Close */}
+          <button
+            type="button"
+            onClick={() => setSearchOpen(false)}
+            className="
+              flex
+              h-10
+              w-10
+              shrink-0
+              items-center
+              justify-center
+              rounded-lg
+              transition
+              hover:bg-slate-800
+            "
+            aria-label="Đóng tìm kiếm"
+          >
+            <X size={22} />
+          </button>
 
-                <div className="hidden lg:block">
-                    <SearchBar />
-                </div>
+        </div>
+      ) : (
+        /* =========================
+           NORMAL HEADER
+        ========================== */
+        <div className="mx-auto flex h-16 max-w-8xl items-center justify-between px-5">
 
-                <UserMenu />
+          {/* Logo */}
+          <Logo />
 
-                <button
-                    onClick={() => setOpen(!open)}
-                    className="lg:hidden"
-                >
-                    {open ? <X /> : <Menu />}
-                </button>
+          {/* Desktop Navbar */}
+          <div className="hidden lg:block">
+            <Navbar />
+          </div>
 
-            </div>
+          {/* Desktop Search */}
+          <div className="hidden lg:block">
+            <SearchBar />
+          </div>
 
-            {open && (
-                <div
-                    className="absolute
-                        top-16
-                        left-0
-                        w-full
-                        max-h-[calc(100vh-64px)]
-                        overflow-y-auto
-                        bg-slate-900"
-                    >
-                    <Navbar mobile />
-                </div>
-            )}
-        </header>
-    );
+          {/* Right side */}
+          <div className="flex items-center gap-1">
+
+            {/* Mobile Search */}
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-lg
+                transition
+                hover:bg-slate-800
+                lg:hidden
+              "
+              aria-label="Tìm kiếm"
+            >
+              <Search size={22} />
+            </button>
+
+            {/* User */}
+            <UserMenu />
+
+            {/* Mobile Menu */}
+            <button
+              type="button"
+              onClick={() => setOpen(!open)}
+              className="
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-lg
+                transition
+                hover:bg-slate-800
+                lg:hidden
+              "
+              aria-label="Menu"
+            >
+              {open ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
+          </div>
+        </div>
+      )}
+
+      {/* =========================
+          MOBILE MENU
+      ========================== */}
+      {!searchOpen && open && (
+        <div
+          className="
+            absolute
+            left-0
+            top-16
+            w-full
+            max-h-[calc(100vh-64px)]
+            overflow-y-auto
+            bg-slate-900
+          "
+        >
+          <Navbar mobile />
+        </div>
+      )}
+    </header>
+  );
 }

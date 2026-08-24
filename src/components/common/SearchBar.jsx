@@ -2,7 +2,11 @@ import { Search, X } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function SearchBar() {
+export default function SearchBar({
+  mobile = false,
+  autoFocus = false,
+  onSearch,
+}) {
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
 
@@ -14,10 +18,19 @@ export default function SearchBar() {
     navigate(`/search?keyword=${encodeURIComponent(value)}`);
 
     setKeyword("");
+
+    // Báo cho Header biết search đã hoàn thành
+    onSearch?.();
   };
 
   return (
-    <div className="relative w-72">
+    <div
+      className={
+        mobile
+          ? "relative flex-1"
+          : "relative w-72"
+      }
+    >
       <Search
         size={18}
         className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
@@ -26,6 +39,7 @@ export default function SearchBar() {
       <input
         type="text"
         value={keyword}
+        autoFocus={autoFocus}
         onChange={(e) => setKeyword(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
@@ -56,8 +70,14 @@ export default function SearchBar() {
 
       {keyword && (
         <button
+          type="button"
           onClick={() => setKeyword("")}
-          className="absolute right-3 top-1/2 -translate-y-1/2"
+          className="
+            absolute
+            right-3
+            top-1/2
+            -translate-y-1/2
+          "
         >
           <X
             size={18}
